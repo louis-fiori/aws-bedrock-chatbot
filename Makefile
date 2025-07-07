@@ -3,12 +3,13 @@
 # Default target
 help:
 	@echo "Available targets:"
-	@echo "  init     - Initialize Terraform"
-	@echo "  plan     - Show Terraform plan"
-	@echo "  apply    - Apply Terraform configuration"
-	@echo "  destroy  - Destroy all resources"
-	@echo "  clean    - Clean cloned repositories and Terraform state"
-	@echo "  setup    - Complete setup (init + apply)"
+	@echo "  init        - Initialize Terraform"
+	@echo "  plan        - Show Terraform plan"
+	@echo "  apply       - Apply Terraform configuration"
+	@echo "  destroy     - Destroy all resources"
+	@echo "  clean       - Clean cloned repositories and Terraform state"
+	@echo "  setup       - Complete setup (init + apply)"
+	@echo "  setup-state - Setup of state management bucket"
 
 # Initialize Terraform
 init:
@@ -37,6 +38,13 @@ clean:
 # Complete setup
 setup: init apply
 	@echo "Deployment complete! Get your URL with: cd terraform && terraform output url"
+
+setup-state:
+	@echo "Setting up state management bucket..."
+	cd terraform_state
+	terraform init
+	terraform apply --var-file=terraform.tfvars
+	@echo "State management bucket setup complete!"
 
 # Quick deploy (for when you've already configured terraform.tfvars)
 deploy: setup
