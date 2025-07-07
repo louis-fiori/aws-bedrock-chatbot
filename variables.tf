@@ -19,3 +19,9 @@ variable "enable_vpc_endpoints" {
   type        = bool
   default     = false
 }
+
+variable "openwebui_version" {
+  description = "Version of OpenWebUI to use"
+  type        = string
+  default     = "v0.6.15"
+}

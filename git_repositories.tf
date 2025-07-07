@@ -22,7 +22,7 @@ resource "null_resource" "clone_open_webui" {
   provisioner "local-exec" {
     command = <<EOF
       if [ ! -d "assets/open-webui" ]; then
-        git clone https://github.com/open-webui/open-webui containers/open-webui
+        git clone  --depth 1 --branch ${var.openwebui_version} https://github.com/open-webui/open-webui containers/open-webui
 
         # Modify Dockerfile for memory optimization (macOS sed syntax)
         sed -i '' 's/RUN npm run build/RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build/' containers/open-webui/Dockerfile
