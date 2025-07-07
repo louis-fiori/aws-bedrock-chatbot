@@ -9,18 +9,30 @@ resource "aws_ecr_repository" "bag_repository" {
   name                 = "bedrock-access-gateway"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
+  
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }
 
 resource "aws_ecr_repository" "openwebui_repository" {
   name                 = "openwebui"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }
 
 resource "aws_ecr_repository" "mcpo_repository" {
   name                 = "mcpo"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }
 
 # Build and push Docker images to ECR
