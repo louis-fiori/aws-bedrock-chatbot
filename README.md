@@ -1,5 +1,5 @@
 # ⚠️ WARNING
-I'm currently improving this little project. If you come from my Medium article, pleas use [v1.0.0](https://github.com/louis-fiori/aws-bedrock-chatbot/releases/tag/v1.0.0).
+I'm currently improving this little project. If you come from my Medium article, please use [v1.0.0](https://github.com/louis-fiori/aws-bedrock-chatbot/releases/tag/v1.0.0).
 
 # 🧠 AWS Bedrock Chatbot — Open WebUI + Bedrock Access Gateway
 
