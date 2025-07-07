@@ -9,7 +9,7 @@ resource "aws_ecr_repository" "bag_repository" {
   name                 = "bedrock-access-gateway"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
-  
+
   image_scanning_configuration {
     scan_on_push = true
   }
