@@ -1,3 +1,6 @@
+# ⚠️ WARNING
+I'm currently improving this little project. If you come from my Medium article, pleas use [v1.0.0](https://github.com/louis-fiori/aws-bedrock-chatbot/releases/tag/v1.0.0).
+
 # 🧠 AWS Bedrock Chatbot — Open WebUI + Bedrock Access Gateway
 
 Deploy your own self-hosted ChatGPT-like interface powered by **Amazon Bedrock**, using **Open WebUI** and **Bedrock Access Gateway**, fully containerized and deployed with **Terraform** on **AWS ECS**.
