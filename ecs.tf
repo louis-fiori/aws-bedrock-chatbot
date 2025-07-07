@@ -35,15 +35,16 @@ module "alb_sg" {
     protocol    = "-1"
   }]
 
-  cidr_ingresses = [
-    {
-      cidr_blocks = ["0.0.0.0/0"]
-      port        = 80
-      protocol    = "tcp"
-    },
+  cidr_ingresses = var.feature_toggles.enable_domain ? [
     {
       cidr_blocks = ["0.0.0.0/0"]
       port        = 443
+      protocol    = "tcp"
+    }
+    ] : [
+    {
+      cidr_blocks = ["0.0.0.0/0"]
+      port        = 80
       protocol    = "tcp"
     }
   ]
@@ -57,7 +58,29 @@ resource "aws_lb" "alb" {
   subnets            = aws_subnet.public_subnets[*].id
 }
 
-resource "aws_lb_listener" "alb_listener" {
+resource "aws_lb_listener" "alb_https_listener" {
+  count = var.feature_toggles.enable_domain ? 1 : 0
+
+  load_balancer_arn = aws_lb.alb.arn
+  port              = 443
+  protocol          = "HTTPS"
+  certificate_arn   = module.certificate[0].arn # Only if domain is enabled
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Not Found"
+      status_code  = "404"
+    }
+  }
+}
+
+resource "aws_lb_listener" "alb_http_listener" {
+  count = var.feature_toggles.enable_domain ? 0 : 1
+
   load_balancer_arn = aws_lb.alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -91,7 +114,7 @@ resource "aws_lb_target_group" "alb_target_group" {
 }
 
 resource "aws_lb_listener_rule" "alb_listener_rule" {
-  listener_arn = aws_lb_listener.alb_listener.arn
+  listener_arn = var.feature_toggles.enable_domain ? aws_lb_listener.alb_https_listener[0].arn : aws_lb_listener.alb_http_listener[0].arn
 
   action {
     type             = "forward"
@@ -133,7 +156,7 @@ data "aws_iam_policy_document" "task_execution_policy" {
   }
 
   statement {
-    actions = ["s3:*"]
+    actions   = ["s3:*"]
     resources = ["*"]
   }
 }
@@ -222,7 +245,7 @@ resource "aws_ecs_task_definition" "task_definition_openwebui" {
           value = "http://gateway.bedrock.local/api/v1"
         },
         {
-          name = "S3_ENDPOINT_URL"
+          name  = "S3_ENDPOINT_URL"
           value = "https://s3.${var.region}.amazonaws.com"
         },
         {
@@ -234,7 +257,7 @@ resource "aws_ecs_task_definition" "task_definition_openwebui" {
           value = var.region
         },
         {
-          name = "STORAGE_PROVIDER"
+          name  = "STORAGE_PROVIDER"
           value = "s3"
         }
       ]
