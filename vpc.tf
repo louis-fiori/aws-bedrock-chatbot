@@ -175,7 +175,7 @@ data "aws_iam_policy_document" "kms_endpoint_policy" {
 
 module "vpc_interface_endpoints" {
   source = "./modules/vpc_endpoints_interface"
-  count  = var.enable_vpc_endpoints ? 1 : 0
+  count  = var.feature_toggles.enable_vpc_endpoints ? 1 : 0
 
   region = var.region
 
