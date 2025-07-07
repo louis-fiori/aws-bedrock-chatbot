@@ -1,0 +1,5 @@
+# AWS Configuration
+account_id          = "123456789012"  # Replace with your AWS Account ID
+region              = "eu-west-1"     # Replace with your preferred region
+profile             = "default"       # Replace with your AWS profile name
+enable_vpc_endpoint = true            

@@ -4,7 +4,5 @@
 *.tfstate.*
 *.tfvars
 
-bedrock-access-gateway
-bedrock-access-gateway/*
-open-webui
-open-webui/*
+containers/bedrock-access-gateway
+containers/open-webui
