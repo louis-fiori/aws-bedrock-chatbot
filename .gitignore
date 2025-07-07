@@ -1,0 +1,8 @@
+.terraform
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+containers/bedrock-access-gateway
+containers/open-webui
