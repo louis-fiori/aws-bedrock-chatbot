@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.9.5"
+  required_version = "1.11.0"
 
   required_providers {
     aws = {
@@ -9,8 +9,6 @@ terraform {
   }
 
   backend "s3" {
-    bucket       = "${var.account_id}-terraform-state"
-    region       = var.region
     key          = "terraform.tfstate"
     encrypt      = true
     use_lockfile = true
