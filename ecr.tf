@@ -38,7 +38,8 @@ resource "aws_ecr_repository" "mcpo_repository" {
 # Build and push Docker images to ECR
 resource "null_resource" "build_bag_image" {
   triggers = {
-    dir_sha1 = sha1(join("", [for f in fileset(local.bag_working_dir, "**") : filesha1("${local.bag_working_dir}/${f}")]))
+    run_once = 1
+    version  = var.versions.bedrock_access_gateway
   }
 
   provisioner "local-exec" {
@@ -60,7 +61,8 @@ resource "null_resource" "build_bag_image" {
 
 resource "null_resource" "build_webui_image" {
   triggers = {
-    dir_sha1 = sha1(join("", [for f in fileset(local.openwebui_working_dir, "**") : filesha1("${local.openwebui_working_dir}/${f}")]))
+    run_once = 1
+    version  = var.versions.openwebui
   }
 
   provisioner "local-exec" {
