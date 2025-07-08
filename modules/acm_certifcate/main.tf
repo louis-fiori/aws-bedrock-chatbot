@@ -1,10 +1,10 @@
 locals {
-  domain_validation_options = tolist(aws_acm_certificate.default.domain_validation_options)
+  domain_validation_options = tolist(aws_acm_certificate.acm_certificate.domain_validation_options)
 }
 
 resource "aws_acm_certificate" "acm_certificate" {
   domain_name               = var.domain_name
-  subject_alternative_names = "*.${var.domain_name}"
+  subject_alternative_names = ["*.${var.domain_name}"]
   validation_method         = "DNS"
 
   lifecycle {
