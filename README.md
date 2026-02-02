@@ -1,6 +1,10 @@
-# 🧠 AWS Bedrock Chatbot — Open WebUI + Bedrock Access Gateway
+# 🧠 AWS Bedrock Chatbot - OpenWebUI + Bedrock Access Gateway
 
-Deploy your own self-hosted ChatGPT-like interface powered by **Amazon Bedrock**, using **Open WebUI** and **Bedrock Access Gateway**, fully containerized and deployed with **Terraform** on **AWS ECS**.
+Deploy your own self-hosted ChatGPT-like interface powered by **Amazon Bedrock**, using **OpenWebUI** and **Bedrock Access Gateway**, fully containerized and deployed with **Terraform** on **AWS ECS**.
+
+## 📝 Medium Article
+
+Article is availaible [here](https://aws.plainenglish.io/deploying-your-own-chatgpt-on-aws-with-amazon-bedrock-and-open-webui-eb4ae62bfc74).
 
 ## 🚀 What is this project?
 
@@ -12,7 +16,7 @@ You'll get:
 - 💬 **Open WebUI** for a ChatGPT-style interface
 - 🔁 **Bedrock Access Gateway (BAG)** for OpenAI-compatible API access
 - ☁️ Deployed on **AWS ECS Fargate**
-- 🔒 **EFS, Secrets Manager, IAM, VPC, ALB** — all built-in
+- 🔒 **EFS, Secrets Manager, IAM, VPC, ALB**... all built-in
 
 ## 📦 Architecture Overview
 
@@ -23,7 +27,6 @@ You'll get:
 - AWS CLI configured with a profile
 - AWS Account ID
 - Terraform installed (`>= 1.9.5`)
-- Access to Amazon Bedrock models ➜ [Request access here](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html)
 
 ## 🧪 Quick Start
 
@@ -40,4 +43,4 @@ Once the script is done, you'll get a DNS output. Open it in your browser, regis
 ![Demonstration](./assets/demo.gif)
 
 ## 📄 License
-MIT — feel free to fork and build upon it!
+MIT, feel free to fork and build upon it!
