@@ -1,5 +1,5 @@
 module "certificate" {
-  source = "./modules/acm_certifcate"
+  source = "./modules/acm_certificate"
 
   count = var.feature_toggles.enable_domain ? 1 : 0
 
