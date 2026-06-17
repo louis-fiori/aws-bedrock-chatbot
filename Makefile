@@ -1,4 +1,4 @@
-.PHONY: help init plan apply destroy clean
+.PHONY: help init plan apply destroy clean setup setup-state deploy output fmt
 REGION=$(shell grep region terraform.tfvars | cut -d'=' -f2 | cut -d'"' -f2)
 ACCOUNT_ID=$(shell grep account_id terraform.tfvars | cut -d'=' -f2 | cut -d'"' -f2)
 PROFILE=$(shell grep profile terraform.tfvars | cut -d'=' -f2 | cut -d'"' -f2)
@@ -44,7 +44,11 @@ clean:
 
 # Complete setup
 setup: init apply
-	@echo "Deployment complete! Get your URL with: cd terraform && terraform output url"
+	@echo "Deployment complete! Get your URL with: make output"
+
+# Print the application URL
+output:
+	terraform output url
 
 # Setup state management bucket
 setup-state:
