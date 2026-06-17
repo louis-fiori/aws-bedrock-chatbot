@@ -520,7 +520,7 @@ resource "aws_ecs_service" "ecs_service_mcpo" {
   network_configuration {
     subnets          = aws_subnet.module_private_subnets[*].id
     security_groups  = [module.ecs_service_module_sg.id]
-    assign_public_ip = true
+    assign_public_ip = false
   }
 
   service_registries {
