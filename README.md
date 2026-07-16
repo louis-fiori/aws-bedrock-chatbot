@@ -2,14 +2,13 @@
 
 # 🧠 AWS Bedrock Chatbot
 
-**A private, self-hosted ChatGPT-like assistant powered by Amazon Bedrock.**
+**A self-hosted generative AI assistant powered by Amazon Bedrock.**
 
 Open WebUI · Bedrock Access Gateway · MCP tools — containerized and deployed on AWS ECS Fargate with Terraform.
 
 [![Terraform](https://img.shields.io/badge/Terraform-%E2%89%A5_1.11-7B42BC?logo=terraform&logoColor=white)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-ECS_Fargate-FF9900?logo=amazonwebservices&logoColor=white)](https://aws.amazon.com/fargate/)
 [![Amazon Bedrock](https://img.shields.io/badge/Amazon-Bedrock-232F3E?logo=amazonwebservices&logoColor=white)](https://aws.amazon.com/bedrock/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](#-license)
 
 📖 Read the companion article on [Medium](https://aws.plainenglish.io/deploying-your-own-chatgpt-on-aws-with-amazon-bedrock-and-open-webui-eb4ae62bfc74)
 
