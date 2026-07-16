@@ -134,7 +134,3 @@ The remote state bucket created by `make setup-state` is **not** removed by `mak
 
 - **Open WebUI build runs out of memory** — the Node build memory limit is already raised automatically; if it still fails, give Docker more memory.
 - **MCPO tools fail to authenticate** — make sure you replaced the `REPLACE_ME` token placeholders (see above).
-
-## License
-
-Released under the [MIT License](./LICENSE) — feel free to fork and build upon it.
